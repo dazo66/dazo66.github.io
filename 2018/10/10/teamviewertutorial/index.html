@@ -11,9 +11,6 @@
     薅资本主义羊毛：如何用TeamViewer进行mc联机 | Dazo66&#39;s Blog
   </title>
 
-  <!-- 网页图标 -->
-  <link rel="shortcut icon" href="https://coding.net/u/dazo66/p/blog-dir/git/raw/master/images/avatar.jpg" /> 
-
   <meta name="description" content="">
   
   <meta name="keywords" content="
@@ -229,11 +226,7 @@
   var i = 0;
   Array.prototype.forEach.call(imageList, element => {
     var index = i;
-    var viewer1 = new Viewer(element, {
-    url(element) {
-      return imageList[index].src;
-    },
-    });
+    var viewer1 = new Viewer(element);
     viewer1.images = imageArray;
     viewer1.index = i - 1;
     viewer1.length = imageArray.length;
