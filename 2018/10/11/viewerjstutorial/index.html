@@ -172,10 +172,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install viewerjs</span><br></pre></td></tr></table></figure>
 <p>在十几秒安装好后你的库类就已经准备好了</p>
 <h2 id="库类导入"><a href="#库类导入" class="headerlink" title="库类导入"></a>库类导入</h2><p>通过阅读官方的readme可以知道我们需要导入的分别是：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span>  <span class="attr">href</span>=<span class="string">"/path/to/viewer.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/path/to/viewer.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span>  <span class="attr">href</span>=<span class="string">"/path/to/viewer.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/path/to/viewer.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这是官方的示例导入，但是在hexo的情况下不能这样直接导入。</p>
 <p>我用的方法是通过嵌入网站的导入方式。</p>
-<p>首先你需要打开npm的安装目录(\node_modules\viewerjs\dist)找到viewer.css， viewer.js这两个文件，</p>
+<p>首先你需要打开npm的安装目录(\node_modules\viewerjs\dist)找到viewer.min.css， viewer.min.js这两个文件，</p>
 <p>将这两个文件分别复制到你的主题的相应的js和css文件夹中。</p>
 <p>比如我的主题是：<a href="https://github.com/sabrinaluo/hexo-theme-replica" target="_blank" rel="noopener">replica</a> 我需要分别把这两个文件放到以下两个文件夹中</p>
 <p><code>...\themes\replica\source\js</code></p>
