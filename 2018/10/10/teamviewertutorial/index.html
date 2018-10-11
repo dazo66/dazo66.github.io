@@ -217,18 +217,25 @@
 
 <!-- 图片查看器实例 -->
 <script type="text/javascript">
+  Viewer.setDefaults({
+      zoomRatio : [0.5],
+      //设置初始缩放
+      show: function () {
+        this.viewer.zoomTo(0.5);
+      },
+    });
+  //获得content中所有的图片
   var article = document.querySelector('.post-content');
   var imageList = article.getElementsByClassName('article-image');
+  //将获取到的HTMLCollections转化成Array
   var imageArray = new Array();
   Array.prototype.forEach.call(imageList, element => {
     imageArray.push(element);
   });
-  var i = 0;
+  //设置每个图片成为图片组
   Array.prototype.forEach.call(imageList, element => {
-    var index = i;
     var viewer1 = new Viewer(element);
     viewer1.images = imageArray;
-    viewer1.index = i - 1;
     viewer1.length = imageArray.length;
   });
 </script>
