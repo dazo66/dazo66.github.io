@@ -270,6 +270,7 @@
     function addCount(Counter) {
         var Counter = AV.Object.extend("Counter");
         url = $(".leancloud_visitors").attr('id').trim();
+        console.log(url);
         title = $(".leancloud_visitors").attr('data-flag-title').trim();
         var query = new AV.Query(Counter);
         query.equalTo("url", url);
