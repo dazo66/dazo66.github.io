@@ -108,3 +108,10 @@ baidutongji: # baidutongji tracking code
 duoshuo: # duoshuo username
 gsc: # google custom search code
 
+deploy:
+  type: git
+  repo: https://github.com/dazo66/dazo66.github.io.git
+  branch: master
+  message: auto commit
+  token: $GH_TOKEN
+

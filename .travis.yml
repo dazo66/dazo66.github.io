@@ -7,6 +7,7 @@ branches:
   only:
     - source # build master branch only
 script:
+  - npm install hexo-deployer-git --save
   - npm install hexo-renderer-stylus@0.1 --save
   - hexo d -g # generate static files
 deploy:
