@@ -81,7 +81,7 @@ theme: replica
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://git.dev.tencent.com/dazo66/blog.git
+  repo: https://github.com/dazo66/dazo66.github.io.git
   branch: master
 
 # add post views
