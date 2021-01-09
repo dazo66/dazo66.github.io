@@ -2,15 +2,14 @@
 <html lang="zh-CN">
 
 
-<head>
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
     为你的Hexo博客添加图片查看器 | Dazo66&#39;s Blog
   </title>
-  <meta name="description" content="">
+  <meta name="description" content>
   
   <meta name="keywords" content="
   viewerjs,javascript
@@ -18,7 +17,7 @@
   
   <meta name="author" content="Dazo66">
 
-  <meta http-equiv="Cache-Control" content="no-transform"/>
+  <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
   <meta name="theme-color" content="#1e2327">
   <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
@@ -26,8 +25,7 @@
 
   <link rel="icon" type="image/x-icon" href="https://coding.net/u/dazo66/p/blog-dir/git/raw/master/images/avatar.jpg">
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="stylesheet"
-        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   
 
   
@@ -158,7 +156,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install viewerjs</span><br></pre></td></tr></table></figure>
 <p>在十几秒安装好后你的库类就已经准备好了</p>
 <h2 id="库类导入"><a href="#库类导入" class="headerlink" title="库类导入"></a>库类导入</h2><p>通过阅读官方的readme可以知道我们需要导入的分别是：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span>  <span class="attr">href</span>=<span class="string">"/path/to/viewer.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/path/to/viewer.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">link</span>  <span class="attr">href</span>=<span class="string">"/path/to/viewer.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/path/to/viewer.min.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>这是官方的示例导入，但是在hexo的情况下不能这样直接导入。</p>
 <p>我用的方法是通过嵌入网站的导入方式。</p>
 <p>首先你需要打开npm的安装目录(\node_modules\viewerjs\dist)找到viewer.min.css， viewer.min.js这两个文件，</p>
@@ -168,7 +166,7 @@
 <p><code>...\themes\replica\source\css</code></p>
 <p>我对这个插件就只有在文章页面中有需求 所以我在我的文章layout文件：\themes\replica\layout\archive.ejs</p>
 <p>的最后添加以下代码 ：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 图片查看器库类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span>  <span class="attr">href</span>=<span class="string">"&lt;%= config.root %&gt;css/viewer.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&lt;%= config.root %&gt;js/viewer.min.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 图片查看器库类 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span>  <span class="attr">href</span>=<span class="string">"&lt;%= config.root %&gt;css/viewer.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"&lt;%= config.root %&gt;js/viewer.min.js"</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h2 id="配置viewerjs"><a href="#配置viewerjs" class="headerlink" title="配置viewerjs"></a>配置viewerjs</h2><p>官方的说明的使用方法是 :</p>
 <p><code>var viewer = new Viewer(HtmlElement, options);</code></p>
 <p>其中传入的元素可以是一个 img 元素 或者是一个 ul 元素，如果是img元素的话， 如果传入的是img元素点击传入的图片就可以打开图片查看器。如果是 ul 的话可以将ul中的所有图片作为一个图片列表进行上下的切换。</p>
