@@ -29,3 +29,118 @@ var article_edit = config.article_edit || {};
 <% }else{ %>
     <%- partial('_widget/disqus') %>
 <% } %>
+
+<!-- 图片查看器库类 -->
+<link  href="<%= config.root %>css/viewer.min.css" rel="stylesheet">
+<script src="<%= config.root %>js/viewer.min.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- 图片查看器实例配置 -->
+<script type="text/javascript">
+  //默认设置
+  Viewer.setDefaults({
+      zoomRatio : [0.5],
+      //设置初始缩放
+      show: function () {
+        this.viewer.zoomTo(0.5);
+      },
+    });
+  //获得content中所有的图片
+  var article = document.querySelector('.post-content');
+  var imageList = article.getElementsByClassName('article-image');
+  //将获取到的HTMLCollections转化成Array
+  var imageArray = new Array();
+  Array.prototype.forEach.call(imageList, element => {
+    imageArray.push(element);
+  });
+  //设置每个图片成为图片组
+  Array.prototype.forEach.call(imageList, element => {
+    var viewer1 = new Viewer(element);
+    viewer1.images = imageArray;
+    viewer1.length = imageArray.length;
+  });
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("<%= config.leancloud_visitors.app_id %>", "<%=config.leancloud_visitors.app_key%>");</script>
+
+<!--page counter part-->
+<script>
+    function showTime(Counter) {
+        var query = new AV.Query(Counter);
+        $(".leancloud_visitors").each(function() {
+            var url = $(this).attr("id").trim();
+            query.equalTo("url", url);
+            query.find({
+                success: function(results) {
+                    if (results.length == 0) {
+                        var content = '0 ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                        return;
+                    }
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var content = object.get('time') + ' ' + $(document.getElementById(url)).text();
+                        $(document.getElementById(url)).text(content);
+                    }
+                },
+                error: function(object, error) {
+                    console.log("Error: " + error.code + " " + error.message);
+                }
+            });
+    
+        });
+    }
+    
+    function addCount(Counter) {
+        var Counter = AV.Object.extend("Counter");
+        url = $(".leancloud_visitors").attr('id').trim();
+        title = $(".leancloud_visitors").attr('data-flag-title').trim();
+        var query = new AV.Query(Counter);
+        query.equalTo("url", url);
+        query.find({
+            success: function(results) {
+                if (results.length > 0) {
+                    var counter = results[0];
+                    counter.fetchWhenSave(true);
+                    counter.increment("time");
+                    counter.save(null, {
+                        success: function(counter) {
+                            var content =  counter.get('time') + ' ' + $(document.getElementById(url)).text();
+                            $(document.getElementById(url)).text(content);
+                        },
+                        error: function(counter, error) {
+                            console.log('Failed to save Visitor num, with error message: ' + error.message);
+                        }
+                    });
+                } else {
+                    var newcounter = new Counter();
+                    newcounter.set("title", title);
+                    newcounter.set("url", url);
+                    newcounter.set("time", 1);
+                    newcounter.save(null, {
+                        success: function(newcounter) {
+                            console.log("newcounter.get('time')="+newcounter.get('time'));
+                            var content = newcounter.get('time') + ' ' + $(document.getElementById(url)).text();
+                            $(document.getElementById(url)).text(content);
+                        },
+                        error: function(newcounter, error) {
+                            console.log('Failed to create');
+                        }
+                    });
+                }
+            },
+            error: function(error) {
+                console.log('Error:' + error.code + " " + error.message);
+            }
+        });
+    }
+    $(function() {
+        var Counter = AV.Object.extend("Counter");
+        if ($('.leancloud_visitors').length == 1) {
+            addCount(Counter);
+        } else if ($('.post-title-link').length > 1) {
+            showTime(Counter);
+        }
+    }); 
+    </script>
