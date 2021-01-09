@@ -1,22 +1,22 @@
-﻿<%
+<%
 config.social = config.social || {};
 theme.social = theme.social || {};
 var github = config.social.github || theme.social.github;
 var weibo = config.social.weibo || theme.social.weibo;
 var linkedin = config.social.linkedin || theme.social.linkedin;
 var location = config.location || theme.location;
-var url = config.mysite;
-var flagcounter_url = config.flagcounter_url;
-var homepage = config.url;
+var url = config.url;
+var flagcounter_href = config.flagcounter_href;
+var flagcounter_img_src = config.flagcounter_img_src;
 %>
 <div class="footer-wrapper container">
   <footer class="footer clearfix">
     <div class="clearfix">
-    <a href="<%= homepage %>" class="footer-logo">
+    <a href="<%= config.url %>" class="footer-logo">
       <i class="fa fa-github"></i>
     </a>
     <ul class="footer-social-link">
-      <li>© 2018 <%= config.author %></li>
+      <li>© 2019 <%= config.author %></li>
       <li><a href="<%= url %>">Home</a></li>
       <% if(github){ %>
       <li><a href="<%= github %>">Github</a></li>
@@ -27,13 +27,14 @@ var homepage = config.url;
       <% } %>
     </ul>
     <div class="footer-theme-info">
-        Hosted by <a href="https://pages.github.com" style="font-weight: bold">Github Pages</a> ❤ Powered by Hexo
-   </div>
+      Theme <a href="//github.com/sabrinaluo/hexo-theme-replica">Replica</a>
+      by <a href="//github.com/sabrinaluo">Hiitea</a> ❤ Powered by Hexo
     </div>
-    <% if(flagcounter_url){ %>
+    </div>
+    <% if(flagcounter_href){ %>
     <div class="footer-pageview">
-        <a href="https://info.flagcounter.com/mx4Y">
-          <img src="<%= flagcounter_url %>">
+        <a href="<%= flagcounter_href %>">
+          <img src="<%= flagcounter_img_src %>">
         </a>
     </div>
     <% } %>

@@ -1,17 +1,16 @@
 <%
 var tags = page.tags ? page.tags.data : '';
+var favicon = config.favicon || 'https://github.githubassets.com/favicon.ico';
 %>
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="google-site-verification" content="pFs8qFS1izEoHNMjPCPbm87Fw9Ozo3h5bdYnu2zp7yI" />
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>
     <%= (page.title || config.title) + (page.title ? ' | ' + config.title : '') %>
   </title>
-
   <meta name="description" content="<%= config.description %>">
   <%
   if(tags){ %>
@@ -25,17 +24,14 @@ var tags = page.tags ? page.tags.data : '';
 
   <meta http-equiv="Cache-Control" content="no-transform"/>
   <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="theme-color" content="#1e2327">
+  <link rel="apple-touch-icon" href="https://github.githubassets.com/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://github.githubassets.com/apple-touch-icon-180x180.png">
 
-  <link rel="icon" type="image/x-icon" href="<%= config.favicon %>">
+  <link rel="icon" type="image/x-icon" href="<%= favicon %>">
   <link rel="stylesheet" href="<%= config.root %>css/main.css">
-  <link rel="stylesheet" href="<%= config.root %>css/base.css">
-  <link rel="stylesheet" href="<%= config.root %>css/calendar.css">
-  <link rel="stylesheet" href="<%= config.root %>css/code.css">
-  <link rel="stylesheet" href="<%= config.root %>css/footer.css">
-  <link rel="stylesheet" href="<%= config.root %>css/header.css">
-  <link rel="stylesheet" href="<%= config.root %>css/navbar.css">
-  <link rel="stylesheet" href="<%= config.root %>css/post.css">
-  <link rel="stylesheet" href="<%= config.root %>css/fontawesome.min.css">
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <%- partial('_widget/google-analytics') %>
   <%- partial('_widget/baidutongji') %>
   <script src="//cdnjs.cloudflare.com/ajax/libs/vue/1.0.25-csp/vue.min.js"></script>
