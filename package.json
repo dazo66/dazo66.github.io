@@ -19,6 +19,5 @@
     "hexo-renderer-stylus": "^0.54.8",
     "hexo-server": "^0.3.3",
     "viewerjs": "^1.2.0",
-    "hexo-renderer-stylus": "^0.1"
   }
 }
