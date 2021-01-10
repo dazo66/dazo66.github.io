@@ -134,8 +134,8 @@
 <p>最后我找到的是一个非常强大的js的图片查看的插件：<a href="https://fengyuanchen.github.io/viewerjs" target="_blank" rel="noopener">viewerjs</a></p>
 <p>它几乎满足了我的需求，由于我没有任何的前端基础下面的操作最多作为一个参考，这些使用方法也是自己随意摸索的，见笑了。</p>
 <p>下面是一些示例：</p>
-<p><a style="float:left;"> <img class="article-image" src="/11/viewerjstutorial/image1.png" alt="示例图片1" title="示例图片1" width="111" border="0"></a></p>
-<p> <img class="article-image" src="/11/viewerjstutorial/image2.png" alt="示例图片2" title="示例图片2" width="111" border="0"> </p>
+<p><a style="float:left;"> <img class="article-image" src="//blog.dazo66.com/2018/10/11/viewerjstutorial/image1.png" alt="示例图片1" title="示例图片1" width="111" border="0"></a></p>
+<p> <img class="article-image" src="//blog.dazo66.com/2018/10/11/viewerjstutorial/image2.png" alt="示例图片2" title="示例图片2" width="111" border="0"> </p>
 <h2 id="库类准备"><a href="#库类准备" class="headerlink" title="库类准备"></a><strong>库类准备</strong></h2><p>通过官方的Readme的Getting Start可以知道我我们需要先安装viewerjs</p>
 <p>在hexo所在的目录下运行这个命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install viewerjs</span><br></pre></td></tr></table></figure>
@@ -191,7 +191,8 @@
     });
   //获得content中所有的图片
   var article = document.querySelector('.post-content');
-  var imageList = article.getElementsByClassName('article-image');
+  //var imageList = article.getElementsByClassName('article-image');
+  var imageList = article.getElementsByTagName('img');
   //将获取到的HTMLCollections转化成Array
   var imageArray = new Array();
   Array.prototype.forEach.call(imageList, element => {
@@ -295,12 +296,12 @@
 <div class="footer-wrapper container">
   <footer class="footer clearfix">
     <div class="clearfix">
-    <a href="" class="footer-logo">
+    <a href="https://blog.dazo66.com" class="footer-logo">
       <i class="fa fa-github"></i>
     </a>
     <ul class="footer-social-link">
       <li>© 2019 Dazo66</li>
-      <li><a href="">Home</a></li>
+      <li><a href="https://blog.dazo66.com">Home</a></li>
       
       <li><a href="https://github.com/dazo66">Github</a></li>
       

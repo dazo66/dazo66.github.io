@@ -223,10 +223,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">64GB = 5860 + 929 = 6780</span><br><span class="line">256GB = 6860 + 929 = 7789</span><br></pre></td></tr></table></figure>
 <p>这个价钱买一个平板加笔还是挺划算的。当然这是最便宜的价钱。如果有别的需求比如说平板后面刻字之类的可能要比这个价格要高个几百块钱（刻字只有线上商店才有）。</p>
 <p>顺手分享下一些有趣的刻字：</p>
-<p>​    <img class="article-image" src="/07/ipadpro11buy/1.png" alt title></p>
-<p><img class="article-image" src="/07/ipadpro11buy/2.jpg" alt title></p>
-<p><img class="article-image" src="/07/ipadpro11buy/3.png" alt title></p>
-<p><img class="article-image" src="/07/ipadpro11buy/4.jpg" alt title></p>
+<p>​    <img class="article-image" src="//blog.dazo66.com/2018/11/07/ipadpro11buy/1.png" alt title></p>
+<p><img class="article-image" src="//blog.dazo66.com/2018/11/07/ipadpro11buy/2.jpg" alt title></p>
+<p><img class="article-image" src="//blog.dazo66.com/2018/11/07/ipadpro11buy/3.png" alt title></p>
+<p><img class="article-image" src="//blog.dazo66.com/2018/11/07/ipadpro11buy/4.jpg" alt title></p>
 
   </article>
 </div>
@@ -252,7 +252,8 @@
     });
   //获得content中所有的图片
   var article = document.querySelector('.post-content');
-  var imageList = article.getElementsByClassName('article-image');
+  //var imageList = article.getElementsByClassName('article-image');
+  var imageList = article.getElementsByTagName('img');
   //将获取到的HTMLCollections转化成Array
   var imageArray = new Array();
   Array.prototype.forEach.call(imageList, element => {
@@ -356,12 +357,12 @@
 <div class="footer-wrapper container">
   <footer class="footer clearfix">
     <div class="clearfix">
-    <a href="" class="footer-logo">
+    <a href="https://blog.dazo66.com" class="footer-logo">
       <i class="fa fa-github"></i>
     </a>
     <ul class="footer-social-link">
       <li>© 2019 Dazo66</li>
-      <li><a href="">Home</a></li>
+      <li><a href="https://blog.dazo66.com">Home</a></li>
       
       <li><a href="https://github.com/dazo66">Github</a></li>
       
