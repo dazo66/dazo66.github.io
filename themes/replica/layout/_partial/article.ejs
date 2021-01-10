@@ -46,7 +46,8 @@ var article_edit = config.article_edit || {};
     });
   //获得content中所有的图片
   var article = document.querySelector('.post-content');
-  var imageList = article.getElementsByClassName('article-image');
+  //var imageList = article.getElementsByClassName('article-image');
+  var imageList = article.getElementsByTagName('img');
   //将获取到的HTMLCollections转化成Array
   var imageArray = new Array();
   Array.prototype.forEach.call(imageList, element => {

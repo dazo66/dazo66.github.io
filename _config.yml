@@ -14,7 +14,7 @@ favicon: https://github.com/dazo66/dazo66.github.io/blob/source/avatar.jpg?raw=t
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: /
+url: https://blog.dazo66.com
 mysite: https://www.dazo66.com
 root: /
 permalink: :year/:month/:day/:title/
