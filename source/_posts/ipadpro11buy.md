@@ -66,10 +66,10 @@ tags: [剁手计划, ipad]
 
 顺手分享下一些有趣的刻字：
 
-​	![1](E:\blog\dazo66.github.io\source\_posts\ipadpro11buy\1.png)
+​	![1](ipadpro11buy\1.png)
 
-![2](E:\blog\dazo66.github.io\source\_posts\ipadpro11buy\2.jpg)
+![2](ipadpro11buy\2.jpg)
 
-![3](E:\blog\dazo66.github.io\source\_posts\ipadpro11buy\3.png)
+![3](ipadpro11buy\3.png)
 
-![4](E:\blog\dazo66.github.io\source\_posts\ipadpro11buy\4.jpg)
+![4](ipadpro11buy\4.jpg)
