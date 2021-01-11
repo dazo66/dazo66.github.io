@@ -46,19 +46,13 @@ var article_edit = config.article_edit || {};
       });
     //获得content中所有的图片 不同的主题图片所在的路径不同 建议自己设置
     var article = document.querySelector('.post-content');
-    //在图片查看器中隐藏的图
-    var visList = article.getElementsByClassName('N');
     var imageList = article.getElementsByTagName('img');
     //将获取到的HTMLCollections转化成Array
     var imageArray = new Array();
     Array.prototype.forEach.call(imageList, element => {
-      if (element.alt != "N") {
+      if (element.alt != "N" && element.className != "N") {
         imageArray.push(element);
       }
-    });
-    //去掉不可以出现在图片查看器上的图
-    Array.prototype.forEach.call(visList, element => {
-      imageArray.pop(element);
     });
     //设置每个图片成为图片组
     Array.prototype.forEach.call(imageList, element => {

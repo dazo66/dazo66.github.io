@@ -4,33 +4,35 @@ date: 2018-10-11 19:07:44
 categories: ["网站"]
 tags: [viewerjs, javascript]
 ---
-[^_^]:
-    这是注释不会显示出来的
-    图片需要使用相对路径进行显示
-    # 这是一级标题
-    ## 这是二级标题
-    ### 这是三级标题
-    #### 这是四级标题
-    ##### 这是五级标题
-    ###### 这是六级标题
-    **加粗**
-    *斜体*
-    ***斜体加粗***
-    ~删除线~
-     引用可以嵌套引用
-    ---分割线
-    ![图片alt](图片地址 "图片title")
-    [超链接名](超链接地址 "超链接title")
-    - 无序列表内容
-    1. 有序列表内容
-    表头|表头|表头
-    ---|:--:|---:
-    内容|内容|内容
-    内容|内容|内容
-    `单行代码`
-    ``` 
-    多行代码
-    ```
+;  这是注释不会显示出来的
+;  ---------
+;  图片需要使用相对路径进行显示
+;  ---------
+;  # 这是一级标题
+;  ## 这是二级标题
+;  ### 这是三级标题
+;  #### 这是四级标题
+;  ##### 这是五级标题
+;  ###### 这是六级标题
+;  **加粗**
+;  *斜体*
+;  ***斜体加粗***
+;  ~删除线~
+;   引用可以嵌套引用
+;  ---分割线
+;  ![图片alt](图片地址 "图片title")
+;  [超链接名](超链接地址 "超链接title")
+;  - 无序列表内容
+;  1. 有序列表内容
+;  表头|表头|表头
+;  ---|:--:|---:
+;  内容|内容|内容
+;  内容|内容|内容
+;  `单行代码`
+;  ``` 
+;  多行代码
+;  ```
+; 注释结束
 
 
 ## **前言**
@@ -134,19 +136,13 @@ npm install viewerjs
     });
   //获得content中所有的图片 不同的主题图片所在的路径不同 建议自己设置
   var article = document.querySelector('.post-content');
-  //在图片查看器中隐藏的图
-  var visList = article.getElementsByClassName('N');
   var imageList = article.getElementsByTagName('img');
   //将获取到的HTMLCollections转化成Array
   var imageArray = new Array();
   Array.prototype.forEach.call(imageList, element => {
-    if (element.alt != "N") {
+    if (element.alt != "N" && element.className != "N") {
       imageArray.push(element);
     }
-  });
-  //去掉不可以出现在图片查看器上的图
-  Array.prototype.forEach.call(visList, element => {
-    imageArray.pop(element);
   });
   //设置每个图片成为图片组
   Array.prototype.forEach.call(imageList, element => {
