@@ -55,7 +55,7 @@ var article_edit = config.article_edit || {};
       }
     });
     //设置每个图片成为图片组
-    Array.prototype.forEach.call(imageList, element => {
+    Array.prototype.forEach.call(imageArray, element => {
       var viewer1 = new Viewer(element);
       viewer1.images = imageArray;
       viewer1.length = imageArray.length;
