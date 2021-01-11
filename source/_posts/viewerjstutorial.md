@@ -6,7 +6,6 @@ tags: [viewerjs, javascript]
 ---
 
 <textarea class="comment" hidden>
-```
 这是注释不会显示出来的
   
   图片需要使用相对路径进行显示
@@ -35,7 +34,6 @@ tags: [viewerjs, javascript]
   \``` 
   多行代码
   \```
-```
 </textarea>
 ## **前言**
 
