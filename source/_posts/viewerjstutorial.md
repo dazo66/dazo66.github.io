@@ -4,7 +4,7 @@ date: 2018-10-11 19:07:44
 categories: ["网站"]
 tags: [viewerjs, javascript]
 ---
-<textarea hidden>
+<img hidden>
 ````
 这是注释不会显示出来的
   
@@ -31,11 +31,11 @@ tags: [viewerjs, javascript]
   内容|内容|内容
   内容|内容|内容
   `单行代码`
-  ``` 
+  \``` 
   多行代码
-  ```
+  \```
 ````
-</textarea>
+</img>
 ## **前言**
 
 我写完上一篇关于如何使用teamviewer进行mc联机的时候，审视我的文章的时候想看大图的时候发现我并不能点击图片打开进行放大之类的（之前不知道这个主题没有集成）
