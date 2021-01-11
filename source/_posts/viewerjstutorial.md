@@ -6,6 +6,7 @@ tags: [viewerjs, javascript]
 ---
 
 <textarea class="comment" hidden>
+```
   这是注释不会显示出来的
   
   图片需要使用相对路径进行显示
@@ -34,7 +35,7 @@ tags: [viewerjs, javascript]
   \``` 
   多行代码
   \```
-</textarea>
+```
 ## **前言**
 
 我写完上一篇关于如何使用teamviewer进行mc联机的时候，审视我的文章的时候想看大图的时候发现我并不能点击图片打开进行放大之类的（之前不知道这个主题没有集成）
