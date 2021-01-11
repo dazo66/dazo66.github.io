@@ -3,7 +3,7 @@ title: 为你的Hexo博客添加图片查看器
 date: 2018-10-11 19:07:44
 categories: ["网站"]
 tags: [viewerjs, javascript]
----
+comment :
 \ 这是注释不会显示出来的
 ;  ---------
 ;  图片需要使用相对路径进行显示
@@ -33,6 +33,8 @@ tags: [viewerjs, javascript]
 ;  多行代码
 ;  ```
 ; 注释结束
+---
+
 
 
 ## **前言**
