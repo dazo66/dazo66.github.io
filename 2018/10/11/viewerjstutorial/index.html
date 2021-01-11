@@ -124,7 +124,30 @@
 
   <article class="post-content">
     <h1>为你的Hexo博客添加图片查看器</h1>
-    <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>我写完上一篇关于如何使用teamviewer进行mc联机的时候，审视我的文章的时候想看大图的时候发现我并不能点击图片打开进行放大之类的（之前不知道这个主题没有集成）</p>
+    <pre><code>图片需要使用相对路径进行显示
+# 这是一级标题
+## 这是二级标题
+### 这是三级标题
+#### 这是四级标题
+##### 这是五级标题
+###### 这是六级标题
+**加粗**
+*斜体*
+***斜体加粗***
+~删除线~
+ 引用可以嵌套引用
+---分割线
+![图片alt](图片地址 &quot;图片title&quot;)
+[超链接名](超链接地址 &quot;超链接title&quot;)
+- 无序列表内容
+1. 有序列表内容
+表头|表头|表头
+---|:--:|---:
+内容|内容|内容
+内容|内容|内容
+`单行代码`
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">多行代码</span><br></pre></td></tr></table></figure>
+</code></pre><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h2><p>我写完上一篇关于如何使用teamviewer进行mc联机的时候，审视我的文章的时候想看大图的时候发现我并不能点击图片打开进行放大之类的（之前不知道这个主题没有集成）</p>
 <p>所以希望可以有这样的一个js插件：</p>
 <ul>
 <li>可以放大缩小</li>
@@ -135,8 +158,8 @@
 <p>最后我找到的是一个非常强大的js的图片查看的插件：<a href="https://fengyuanchen.github.io/viewerjs" target="_blank" rel="noopener">viewerjs</a></p>
 <p>它几乎满足了我的需求，由于我没有任何的前端基础下面的操作最多作为一个参考，这些使用方法也是自己随意摸索的，见笑了。</p>
 <p>下面是一些示例：</p>
-<p><a style="float:left;"> <img class="article-image" src="//blog.dazo66.com/2018/10/11/viewerjstutorial/image1.png" alt="示例图片1" title="示例图片1" width="111" border="0"></a></p>
-<p> <img class="article-image" src="//blog.dazo66.com/2018/10/11/viewerjstutorial/image2.png" alt="示例图片2" title="示例图片2" width="111" border="0"> </p>
+<p><a style="float:left;"> <img class="N" src="//blog.dazo66.com/2018/10/11/viewerjstutorial/image1.png" alt="示例图片1" title="示例图片1" width="111" border="0"></a></p>
+<p> <img class="N" src="//blog.dazo66.com/2018/10/11/viewerjstutorial/image2.png" alt="示例图片2" title="示例图片2" width="111" border="0"> </p>
 <h2 id="库类准备"><a href="#库类准备" class="headerlink" title="库类准备"></a><strong>库类准备</strong></h2><p>通过官方的Readme的Getting Start可以知道我我们需要先安装viewerjs</p>
 <p>在hexo所在的目录下运行这个命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install viewerjs</span><br></pre></td></tr></table></figure>
@@ -159,13 +182,14 @@
 <p>但是在markdown中编写的图片几乎是零散的图片，没法通过只传入一个元素的形式达到我们的需求</p>
 <p>通过一些控制台输出发现我们主要需要设置的是实例viewer中的images属性和length属性</p>
 <p>所以我们需要进行如下配置， 以下代码放在上面库类导入的代码后面：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 图片查看器实例配置 --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  <span class="comment">//默认设置， 可以根据个人需求和喜好进行配置</span></span><br><span class="line">  <span class="comment">//详细参考官方说明</span></span><br><span class="line">  Viewer.setDefaults(&#123;</span><br><span class="line">      <span class="comment">//设置初始缩放 default: 1</span></span><br><span class="line">      zoomRatio : [<span class="number">0.5</span>],</span><br><span class="line">      <span class="comment">//设置滚轮缩放比率 default: 0.1</span></span><br><span class="line">      show: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.viewer.zoomTo(<span class="number">0.5</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="comment">//获得content中所有的图片， 不同主题可能有所不同</span></span><br><span class="line">  <span class="comment">//为了和其他的图片区别开来 所以在markdown中插入图片的时候使用独特的记号</span></span><br><span class="line">  <span class="comment">//为了一次性得到所有的图片我这里采用的是class = 'article-image'</span></span><br><span class="line">  <span class="keyword">var</span> article = <span class="built_in">document</span>.querySelector(<span class="string">'.post-content'</span>);</span><br><span class="line">  <span class="keyword">var</span> imageList = article.getElementsByClassName(<span class="string">'article-image'</span>);</span><br><span class="line">  <span class="comment">//将获取到的HTMLCollections转化成Array</span></span><br><span class="line">  <span class="keyword">var</span> imageArray = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="built_in">Array</span>.prototype.forEach.call(imageList, element =&gt; &#123;</span><br><span class="line">    imageArray.push(element);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">//设置每个图片成为图片组</span></span><br><span class="line">  <span class="built_in">Array</span>.prototype.forEach.call(imageList, element =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> viewer1 = <span class="keyword">new</span> Viewer(element);</span><br><span class="line">    viewer1.images = imageArray;</span><br><span class="line">    viewer1.length = imageArray.length;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
-<p>和上讲的一样 为了一次性得到所有的有查看器需求的图片，我这里采用的是设置同样的classname，所以我们在markdown中插入图片的方式需要采用html标签的方式插图。</p>
-<p>示例如下：</p>
-<p><code>&lt;img class=&quot;article-image&quot; src=&quot;image.png&quot; alt=&quot;alt&quot; title=&quot;title&quot;/&gt;</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 图片查看器实例配置 --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">  <span class="comment">//默认设置</span></span><br><span class="line">  Viewer.setDefaults(&#123;</span><br><span class="line">      zoomRatio : [<span class="number">0.5</span>],</span><br><span class="line">      <span class="comment">//设置初始缩放</span></span><br><span class="line">      show: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.viewer.zoomTo(<span class="number">0.5</span>);</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">  <span class="comment">//获得content中所有的图片 不同的主题图片所在的路径不同 建议自己设置</span></span><br><span class="line">  <span class="keyword">var</span> article = <span class="built_in">document</span>.querySelector(<span class="string">'.post-content'</span>);</span><br><span class="line">  <span class="comment">//在图片查看器中隐藏的图</span></span><br><span class="line">  <span class="keyword">var</span> visList = article.getElementsByClassName(<span class="string">'N'</span>);</span><br><span class="line">  <span class="keyword">var</span> imageList = article.getElementsByTagName(<span class="string">'img'</span>);</span><br><span class="line">  <span class="comment">//将获取到的HTMLCollections转化成Array</span></span><br><span class="line">  <span class="keyword">var</span> imageArray = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">  <span class="built_in">Array</span>.prototype.forEach.call(imageList, element =&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (element.alt != <span class="string">"N"</span>) &#123;</span><br><span class="line">      imageArray.push(element);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">//去掉不可以出现在图片查看器上的图</span></span><br><span class="line">  <span class="built_in">Array</span>.prototype.forEach.call(visList, element =&gt; &#123;</span><br><span class="line">    imageArray.pop(element);</span><br><span class="line">  &#125;);</span><br><span class="line">  <span class="comment">//设置每个图片成为图片组</span></span><br><span class="line">  <span class="built_in">Array</span>.prototype.forEach.call(imageList, element =&gt; &#123;</span><br><span class="line">    <span class="keyword">var</span> viewer1 = <span class="keyword">new</span> Viewer(element);</span><br><span class="line">    viewer1.images = imageArray;</span><br><span class="line">    viewer1.length = imageArray.length;</span><br><span class="line">  &#125;);</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>默认是把所有的img tag的图片都作为图片查看器的实例 可以用这样的默认方式</p>
+<p><code>![titile](image.png)</code></p>
+<p>或者是用img tag设置图片属性：</p>
+<p><code>&lt;img src=&quot;image.png&quot; alt=&quot;alt&quot; title=&quot;title&quot;/&gt;</code></p>
+<p>如果不希望一个图片出现在图片查看器中，可以设置tag中的class属性为”N”:<br><code>&lt;img class=&quot;N&quot; src=&quot;image.png&quot; alt=&quot;alt&quot; title=&quot;title&quot;/&gt;</code><br>或者是在输入图片的时候设置alt为”N”:<br><code>![N](image.png)</code></p>
 <p>我个人也推荐采用这个方式插图这样可以利用一些标签的属性对图片的大小显示效果进行控制。</p>
-<p>这样子 只要是文章内容中classname为”article-image”的图片都应用了这个插件。</p>
-<p>不同的主题格式的网页结构不用，元素的获得方式也有一些不用：对这方面不了解的可以参考<a href="https://developer.mozilla.org/en-US/docs/Web/API/Document" target="_blank" rel="noopener">Document-Api</a></p>
+<p>不同的主题格式的网页结构不用，元素的获得方式也有一些不用，具体和自己主题的适配建议自己在网页中调试一下，看看文章图片都在哪个标签下面。</p>
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>由于在此之前我对html标签和js的语法可以说是完全不了解，也没有相应的开发经验所以这个教程最多作为参考而有不明智的处理也请见谅，有错误的地方也可以私信我邮箱。</p>
 
   </article>
@@ -182,30 +206,37 @@
 
 <!-- 图片查看器实例配置 -->
 <script type="text/javascript">
-  //默认设置
-  Viewer.setDefaults({
-      zoomRatio : [0.5],
-      //设置初始缩放
-      show: function () {
-        this.viewer.zoomTo(0.5);
-      },
+    //默认设置
+    Viewer.setDefaults({
+        zoomRatio : [0.5],
+        //设置初始缩放
+        show: function () {
+          this.viewer.zoomTo(0.5);
+        },
+      });
+    //获得content中所有的图片 不同的主题图片所在的路径不同 建议自己设置
+    var article = document.querySelector('.post-content');
+    //在图片查看器中隐藏的图
+    var visList = article.getElementsByClassName('N');
+    var imageList = article.getElementsByTagName('img');
+    //将获取到的HTMLCollections转化成Array
+    var imageArray = new Array();
+    Array.prototype.forEach.call(imageList, element => {
+      if (element.alt != "N") {
+        imageArray.push(element);
+      }
     });
-  //获得content中所有的图片
-  var article = document.querySelector('.post-content');
-  //var imageList = article.getElementsByClassName('article-image');
-  var imageList = article.getElementsByTagName('img');
-  //将获取到的HTMLCollections转化成Array
-  var imageArray = new Array();
-  Array.prototype.forEach.call(imageList, element => {
-    imageArray.push(element);
-  });
-  //设置每个图片成为图片组
-  Array.prototype.forEach.call(imageList, element => {
-    var viewer1 = new Viewer(element);
-    viewer1.images = imageArray;
-    viewer1.length = imageArray.length;
-  });
-</script>
+    //去掉不可以出现在图片查看器上的图
+    Array.prototype.forEach.call(visList, element => {
+      imageArray.pop(element);
+    });
+    //设置每个图片成为图片组
+    Array.prototype.forEach.call(imageList, element => {
+      var viewer1 = new Viewer(element);
+      viewer1.images = imageArray;
+      viewer1.length = imageArray.length;
+    });
+  </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
