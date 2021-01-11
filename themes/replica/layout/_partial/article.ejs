@@ -36,30 +36,37 @@ var article_edit = config.article_edit || {};
 
 <!-- 图片查看器实例配置 -->
 <script type="text/javascript">
-  //默认设置
-  Viewer.setDefaults({
-      zoomRatio : [0.5],
-      //设置初始缩放
-      show: function () {
-        this.viewer.zoomTo(0.5);
-      },
+    //默认设置
+    Viewer.setDefaults({
+        zoomRatio : [0.5],
+        //设置初始缩放
+        show: function () {
+          this.viewer.zoomTo(0.5);
+        },
+      });
+    //获得content中所有的图片 不同的主题图片所在的路径不同 建议自己设置
+    var article = document.querySelector('.post-content');
+    //在图片查看器中隐藏的图
+    var visList = article.getElementsByClassName('N');
+    var imageList = article.getElementsByTagName('img');
+    //将获取到的HTMLCollections转化成Array
+    var imageArray = new Array();
+    Array.prototype.forEach.call(imageList, element => {
+      if (element.alt != "N") {
+        imageArray.push(element);
+      }
     });
-  //获得content中所有的图片
-  var article = document.querySelector('.post-content');
-  //var imageList = article.getElementsByClassName('article-image');
-  var imageList = article.getElementsByTagName('img');
-  //将获取到的HTMLCollections转化成Array
-  var imageArray = new Array();
-  Array.prototype.forEach.call(imageList, element => {
-    imageArray.push(element);
-  });
-  //设置每个图片成为图片组
-  Array.prototype.forEach.call(imageList, element => {
-    var viewer1 = new Viewer(element);
-    viewer1.images = imageArray;
-    viewer1.length = imageArray.length;
-  });
-</script>
+    //去掉不可以出现在图片查看器上的图
+    Array.prototype.forEach.call(visList, element => {
+      imageArray.pop(element);
+    });
+    //设置每个图片成为图片组
+    Array.prototype.forEach.call(imageList, element => {
+      var viewer1 = new Viewer(element);
+      viewer1.images = imageArray;
+      viewer1.length = imageArray.length;
+    });
+  </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>

@@ -4,7 +4,33 @@ date: 2018-10-11 19:07:44
 categories: ["网站"]
 tags: [viewerjs, javascript]
 ---
-
+[^_^]:
+    这是注释不会显示出来的
+    图片需要使用相对路径进行显示
+    # 这是一级标题
+    ## 这是二级标题
+    ### 这是三级标题
+    #### 这是四级标题
+    ##### 这是五级标题
+    ###### 这是六级标题
+    **加粗**
+    *斜体*
+    ***斜体加粗***
+    ~删除线~
+     引用可以嵌套引用
+    ---分割线
+    ![图片alt](图片地址 "图片title")
+    [超链接名](超链接地址 "超链接title")
+    - 无序列表内容
+    1. 有序列表内容
+    表头|表头|表头
+    ---|:--:|---:
+    内容|内容|内容
+    内容|内容|内容
+    `单行代码`
+    ``` 
+    多行代码
+    ```
 
 
 ## **前言**
@@ -26,9 +52,9 @@ tags: [viewerjs, javascript]
 
 
 
-<a style="float:left;"> <img class="article-image" src="viewerjstutorial\image1.png" alt="示例图片1" title="示例图片1" width = 111 border=0  />
+<a style="float:left;"> <img class="N" src="viewerjstutorial\image1.png" alt="示例图片1" title="示例图片1" width = 111 border=0  />
 
- <img class="article-image" src="viewerjstutorial\image2.png" alt="示例图片2" title="示例图片2" width=111 border=0  /></a> 
+ <img class="N" src="viewerjstutorial\image2.png" alt="示例图片2" title="示例图片2" width=111 border=0  /></a> 
 
 
 
@@ -98,25 +124,29 @@ npm install viewerjs
 ```javascript
 <!-- 图片查看器实例配置 -->
 <script type="text/javascript">
-  //默认设置， 可以根据个人需求和喜好进行配置
-  //详细参考官方说明
+  //默认设置
   Viewer.setDefaults({
-      //设置初始缩放 default: 1
       zoomRatio : [0.5],
-      //设置滚轮缩放比率 default: 0.1
+      //设置初始缩放
       show: function () {
         this.viewer.zoomTo(0.5);
       },
     });
-  //获得content中所有的图片， 不同主题可能有所不同
-  //为了和其他的图片区别开来 所以在markdown中插入图片的时候使用独特的记号
-  //为了一次性得到所有的图片我这里采用的是class = 'article-image'
+  //获得content中所有的图片 不同的主题图片所在的路径不同 建议自己设置
   var article = document.querySelector('.post-content');
-  var imageList = article.getElementsByClassName('article-image');
+  //在图片查看器中隐藏的图
+  var visList = article.getElementsByClassName('N');
+  var imageList = article.getElementsByTagName('img');
   //将获取到的HTMLCollections转化成Array
   var imageArray = new Array();
   Array.prototype.forEach.call(imageList, element => {
-    imageArray.push(element);
+    if (element.alt != "N") {
+      imageArray.push(element);
+    }
+  });
+  //去掉不可以出现在图片查看器上的图
+  Array.prototype.forEach.call(visList, element => {
+    imageArray.pop(element);
   });
   //设置每个图片成为图片组
   Array.prototype.forEach.call(imageList, element => {
@@ -126,18 +156,22 @@ npm install viewerjs
   });
 </script>
 ```
+默认是把所有的img tag的图片都作为图片查看器的实例 可以用这样的默认方式
 
-和上讲的一样 为了一次性得到所有的有查看器需求的图片，我这里采用的是设置同样的classname，所以我们在markdown中插入图片的方式需要采用html标签的方式插图。
+`![titile](image.png)`
 
-示例如下：
+或者是用img tag设置图片属性：
 
-`<img class="article-image" src="image.png" alt="alt" title="title"/>`
+`<img src="image.png" alt="alt" title="title"/>`
+
+如果不希望一个图片出现在图片查看器中，可以设置tag中的class属性为"N":
+`<img class="N" src="image.png" alt="alt" title="title"/>`
+或者是在输入图片的时候设置alt为"N":
+`![N](image.png)`
 
 我个人也推荐采用这个方式插图这样可以利用一些标签的属性对图片的大小显示效果进行控制。
 
-这样子 只要是文章内容中classname为"article-image"的图片都应用了这个插件。
-
-不同的主题格式的网页结构不用，元素的获得方式也有一些不用：对这方面不了解的可以参考[Document-Api](https://developer.mozilla.org/en-US/docs/Web/API/Document)
+不同的主题格式的网页结构不用，元素的获得方式也有一些不用，具体和自己主题的适配建议自己在网页中调试一下，看看文章图片都在哪个标签下面。
 
 
 
