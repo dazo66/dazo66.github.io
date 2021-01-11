@@ -32,7 +32,7 @@ echo categories: [] >>"%fileName%.md"
 echo tags: []>>"%fileName%.md"
 echo --->>"%fileName%.md"
 
-echo   ^<textarea hidden^>>>"%fileName%.md"
+echo   ^<h2 hidden style="display: none;"^>>>"%fileName%.md"
 echo   ````>>"%fileName%.md"
 echo   这是注释不会显示出来的>>"%fileName%.md"
 echo   --------->>"%fileName%.md"
@@ -64,7 +64,7 @@ echo   多行代码>>"%fileName%.md"
 echo   ```>>"%fileName%.md"
 echo   注释结束>>"%fileName%.md"
 echo   ````>>"%fileName%.md"
-
+echo   ^</h2^>>>"%fileName%.md"
 chcp 936
 start /I %fileName%.md
 
