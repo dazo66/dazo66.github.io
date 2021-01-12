@@ -4,7 +4,7 @@ date: 2021-01-11 20:43:36
 categories: [] 
 tags: []
 ---
-<h2 hidden style="display: none;">
+<img hidden style="display: none;">
 ````
 这是注释不会显示出来的
 ---------
@@ -36,7 +36,7 @@ tags: []
 ```
 注释结束
 ````
-</h2 hidden>
+</h2>
 ## **前言**
 因为我电脑C盘空间太小了，就删掉了nodejs环境，但是删掉了之后才想起来我的blog需要nodejs的hexo脚本新建文章，没有了nodejs之后一直懒得写了。
 直到有一天，我知道了原来手动新建就可以了，再加上终于去搞定了Travis CI的自动化构建，于是乎写了一个脚本来帮助我生成空白文章。
