@@ -22,7 +22,7 @@ var recentPosts = page.posts.data.slice(0, 6);
             <p class="post-description text-ellipsis desktop-only">
               <% if(post.content.indexOf('markdown使用提示结束') > -1) {%>
                 <%= post.content
-                  .substr(post.content.indexOf('markdown使用提示结束') + 50)
+                  .substr(post.content.indexOf('markdown使用提示结束') + 58)
                   .replace(/<[^>]*>/ig, ' ')
                       .substr(0, 50) %>
                 <% } else { %>

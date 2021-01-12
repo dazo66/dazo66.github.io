@@ -62,7 +62,7 @@ echo `单行代码`>>"%fileName%.md"
 echo ``` >>"%fileName%.md"
 echo 多行代码>>"%fileName%.md"
 echo ```>>"%fileName%.md"
-echo 注释结束>>"%fileName%.md"
+echo markdown使用提示结束>>"%fileName%.md"
 echo ````>>"%fileName%.md"
 echo ^</h2 hidden^>>>"%fileName%.md"
 chcp 936
