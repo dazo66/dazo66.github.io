@@ -20,10 +20,10 @@ var recentPosts = page.posts.data.slice(0, 6);
               <a href="<%= url_for(post.path) %>"><%= post.title || 'Untitled' %></a>
             </h5>
             <p class="post-description text-ellipsis desktop-only">
-              <% if(post.content.indexOf('这是注释不会显示出来的') > -1) {%>
+              <% if(post.content.indexOf('markdown使用提示结束') > -1) {%>
                 <%= post.content
-                      .substr(post.content.indexOf('这是注释不会显示出来的') + 346)
                       .replace(/<[^>]*>/ig, ' ')
+                      .substr(post.content.indexOf('markdown使用提示结束') + 14)
                       .substr(0, 50) %>
                 <% } else { %>
                   <%= post.content
