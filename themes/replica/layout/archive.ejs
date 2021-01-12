@@ -22,9 +22,16 @@ var nav_selected = page.path.split('/')[0];
         <li class="archive-list-item">
           <h2><a href="<%= url_for(post.path) %>"><%= post.title || 'Untitled' %></a></h2>
           <p>
-            <%= post.content
+            <% if(post.content.indexOf('markdown使用提示结束') > -1) {%>
+              <%= post.content
+                .substr(post.content.indexOf('markdown使用提示结束') + 58)
+                .replace(/<[^>]*>/ig, ' ')
+                    .substr(0, 50) %>
+              <% } else { %>
+                <%= post.content
                     .replace(/<[^>]*>/ig, ' ')
-                    .substr(0, 150) %>...
+                    .substr(0, 50) %>
+              <% } %>...
           </p>
           <ul class="tag-list clearfix">
             <% post.tags.forEach(function(tag){ %>
