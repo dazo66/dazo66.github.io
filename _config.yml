@@ -10,7 +10,7 @@ keywords:
 author: Dazo66
 language: zh-CN
 timezone: Asia/Shanghai
-favicon: https://github.com/dazo66/dazo66.github.io/blob/source/avatar.jpg?raw=true
+favicon: https://avatars.githubusercontent.com/u/30711471
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
@@ -84,7 +84,7 @@ leancloud_visitors:
   app_key: EeP1oHuKTG1u4BqNbJ1uGcJr
 
   # left-side user profile
-avatar: https://github.com/dazo66/dazo66.github.io/blob/source/avatar.jpg?raw=true
+avatar: https://avatars.githubusercontent.com/u/30711471
 location: WENZHOU ZHEJIANG
 email: dazo66@dazo66.com
 social:
